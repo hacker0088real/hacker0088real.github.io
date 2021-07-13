@@ -8,7 +8,7 @@ if (version_compare($phpVersion, '7.0.0', '<'))
 
 $rootDir = realpath(__DIR__ . '/..');
 chdir($rootDir);
-require($rootDir . '/src/XF.php');
 
-XF::start($rootDir);
-XF::runApp('XF\Install\App');
+require($rootDir . '/src/XF/Install/_upgrader/core.php');
+$upgrader = XFUpgraderWeb::create($rootDir);
+$upgrader->run();
